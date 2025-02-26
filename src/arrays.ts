@@ -100,12 +100,9 @@ export function injectPositive(values: number[]): number[] {
     const negativeIndex = values.findIndex((val) => val < 0);
 
     if (negativeIndex === -1) {
-        // No negative numbers, append sum to the end
         const sum = values.reduce((acc, val) => acc + val, 0);
         return [...values, sum];
     } else {
-        // The error was in summing all numbers including the negative one
-        // We should only sum numbers up to but NOT including the negative number
         const sumBeforeNegative = values
             .slice(0, negativeIndex)
             .reduce((acc, val) => acc + val, 0);
